@@ -18,6 +18,7 @@ namespace CompanyApi.Models
         public int CompanyActiveStatus { get; set; }
         public string CreateAt { get; set; } = null!;
         public int? ClientId { get; set; }
+        public int? CompanyZoneCount { get; set; }
 
         public virtual Client? Client { get; set; }
     }

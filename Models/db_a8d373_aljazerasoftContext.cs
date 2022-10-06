@@ -22,7 +22,11 @@ namespace CompanyApi.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source= SQL5070.site4now.net ;Initial Catalog=db_a8d373_aljazerasoft ;User Id= db_a8d373_aljazerasoft_admin ;Password= bEMXpt5aRhnNdmU ; ");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -99,6 +103,8 @@ namespace CompanyApi.Models
                     .HasMaxLength(250)
                     .HasColumnName("companyUsernam");
 
+                entity.Property(e => e.CompanyZoneCount).HasColumnName("companyZoneCount");
+
                 entity.Property(e => e.CreateAt)
                     .HasMaxLength(50)
                     .HasColumnName("createAt");
@@ -136,6 +142,8 @@ namespace CompanyApi.Models
                 entity.Property(e => e.CompanyTaxNumber)
                     .HasMaxLength(100)
                     .HasColumnName("companyTaxNumber");
+
+                entity.Property(e => e.CompanyZoneCount).HasColumnName("companyZoneCount");
             });
 
             OnModelCreatingPartial(modelBuilder);

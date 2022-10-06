@@ -12,5 +12,6 @@ namespace CompanyApi.Models
         public string CompanyTaxNumber { get; set; } = null!;
         public string CompanyPhone { get; set; } = null!;
         public string CompanyCommercial { get; set; } = null!;
+        public int? CompanyZoneCount { get; set; }
     }
 }
