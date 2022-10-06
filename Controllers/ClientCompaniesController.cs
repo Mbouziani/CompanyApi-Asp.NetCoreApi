@@ -24,23 +24,43 @@ namespace CompanyApi.Controllers
         [HttpGet]
         public async Task<ActionResult<Company>> GetClientCompanies([FromQuery] String username, String password)
         {
-            var result = await _context.ClientCompanies.Where(cC => cC.CompanyUsernam == username && cC.CompanyPasswrod == password && cC.CompanyActiveStatus == 1).ToListAsync();
+            // Status Of Return 
+            //------------------------------------------------
+            // 1- return 'Data' is mean login with Successe
+            // 2- return '2' is mean Active Status is Blocked
+            // 3- return '0' is mean is not Found 
+            //------------------------------------------------
+
+
+            var result = await _context.ClientCompanies.Where(cC => cC.CompanyUsernam == username && cC.CompanyPasswrod == password  ).ToListAsync();
 
             if (!result.Any())
             {
-                return NotFound();
+                return Ok(0);
+            }
+            else
+            {
+                if(result[0].CompanyActiveStatus == 1)
+                {
+                    Company company = new Company();
+                    company.CompanyNumber = result[0].CompanyNumber;
+                    company.CompanyName = result[0].CompanyName;
+                    company.CompanyTaxNumber = result[0].CompanyTaxNumber;
+                    company.CompanyPhone = result[0].CompanyPhone;
+                    company.CompanyAddress = result[0].CompanyAddress;
+                    company.CompanyCommercial = result[0].CompanyCommercial;
+                    company.CompanyZoneCount = result[0].CompanyZoneCount;
+
+                    return company;
+                }
+                else
+                {
+                    return Ok(2);
+                }
+
             }
 
-            Company company = new Company();
-            company.CompanyNumber = result[0].CompanyNumber;
-            company.CompanyName = result[0].CompanyName;
-            company.CompanyTaxNumber = result[0].CompanyTaxNumber;
-            company.CompanyPhone = result[0].CompanyPhone;
-            company.CompanyAddress = result[0].CompanyAddress;
-            company.CompanyCommercial = result[0].CompanyCommercial;
-            company.CompanyZoneCount = result[0].CompanyZoneCount;
-
-            return company;
+           
         }
 
         // GET: api/ClientCompanies/5
