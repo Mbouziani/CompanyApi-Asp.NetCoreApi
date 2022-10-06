@@ -38,12 +38,9 @@ namespace CompanyApi.Controllers
             company.CompanyPhone = result[0].CompanyPhone;
             company.CompanyAddress = result[0].CompanyAddress;
             company.CompanyCommercial = result[0].CompanyCommercial;
+            company.CompanyZoneCount = result[0].CompanyZoneCount;
 
             return company;
-
-
-
-
         }
 
         // GET: api/ClientCompanies/5
