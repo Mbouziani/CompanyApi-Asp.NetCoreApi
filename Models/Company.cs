@@ -13,5 +13,6 @@ namespace CompanyApi.Models
         public string CompanyPhone { get; set; } = null!;
         public string CompanyCommercial { get; set; } = null!;
         public int? CompanyZoneCount { get; set; }
+        public string? CompanyLink { get; set; }
     }
 }

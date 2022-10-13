@@ -50,6 +50,7 @@ namespace CompanyApi.Controllers
                     company.CompanyAddress = result[0].CompanyAddress;
                     company.CompanyCommercial = result[0].CompanyCommercial;
                     company.CompanyZoneCount = result[0].CompanyZoneCount;
+                    company.CompanyLink= result[0].CompanyLink;
 
                     return company;
                 }

@@ -22,7 +22,7 @@ namespace CompanyApi.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
+           
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -77,6 +77,10 @@ namespace CompanyApi.Models
                     .HasMaxLength(250)
                     .HasColumnName("companyEmail");
 
+                entity.Property(e => e.CompanyLink)
+                    .HasMaxLength(300)
+                    .HasColumnName("companyLink");
+
                 entity.Property(e => e.CompanyName)
                     .HasMaxLength(250)
                     .HasColumnName("companyName");
@@ -124,6 +128,10 @@ namespace CompanyApi.Models
                 entity.Property(e => e.CompanyCommercial)
                     .HasMaxLength(100)
                     .HasColumnName("companyCommercial");
+
+                entity.Property(e => e.CompanyLink)
+                    .HasMaxLength(300)
+                    .HasColumnName("companyLink");
 
                 entity.Property(e => e.CompanyName)
                     .HasMaxLength(250)
