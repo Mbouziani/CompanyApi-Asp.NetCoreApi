@@ -146,21 +146,11 @@ namespace CompanyApi.Controllers
 
                     result[i].CompanyActiveStatus = activeStatus ? 1 : 0;
                     _context.Entry(result[i]).State = EntityState.Modified;
-                    
                 }
-
             }
-
-
             try
             {
-
-
                 await _context.SaveChangesAsync(); 
-                
-                
-
-
             }
             catch (DbUpdateConcurrencyException)
             {
